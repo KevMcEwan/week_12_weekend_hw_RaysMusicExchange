@@ -95,5 +95,25 @@ public class ShopTest {
         assertEquals(50.00, shop.getTill(), 0.01);
     }
 
+    @Test
+    public void canBuyItemFromCustomer__tillHasEnoughMoney(){
+        assertEquals(0, shop.getTotalNumberOfItemsInStock());
+        customer.addItemToPurchasedItems(drumStick);
+        shop.buyItemFromCustomer(customer, drumStick);
+        assertEquals(1, shop.getTotalNumberOfItemsInStock());
+        assertEquals(206.00, customer.getMoney(), 0.01);
+        assertEquals(44.00, shop.getTill(), 0.01);
+    }
+
+    @Test
+    public void canBuyItemFromCutsomer__tillDoesNotHaveEnoughMoney(){
+        assertEquals(0, shop.getTotalNumberOfItemsInStock());
+        customer.addItemToPurchasedItems(guitar);
+        shop.buyItemFromCustomer(customer, guitar);
+        assertEquals(0, shop.getTotalNumberOfItemsInStock());
+        assertEquals(200.00, customer.getMoney(), 0.01);
+        assertEquals(50.00, shop.getTill(), 0.01);
+    }
+
 
 }

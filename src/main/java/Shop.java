@@ -67,10 +67,13 @@ public class Shop {
     }
 
     public void buyItemFromCustomer(Customer customer, ISell item){
-        if (till >= item.getPriceToSell())
-        addItemToStock(item);
-        customer.removeItemFromPurchasedItems(item);
-        setTill(till -= item.getPriceToSell());
+        if (till >= item.getPriceToSell()) {
+            addItemToStock(item);
+            customer.removeItemFromPurchasedItems(item);
+            setTill(till -= item.getPriceBoughtIn());
+            double money = customer.getMoney();
+            customer.setMoney( money += item.getPriceBoughtIn());
+        }
     }
 
 }

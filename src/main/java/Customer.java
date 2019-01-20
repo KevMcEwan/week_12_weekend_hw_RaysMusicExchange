@@ -29,4 +29,8 @@ public class Customer {
     public void addItemToPurchasedItems(ISell item){
         this.purchasedItems.add(item);
     }
+
+    public void removeItemFromPurchasedItems(ISell item) {
+        this.purchasedItems.remove(item);
+    }
 }
