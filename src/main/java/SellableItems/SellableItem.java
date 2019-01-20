@@ -30,6 +30,7 @@ public class SellableItem implements ISell {
         return priceToSell;
     }
 
+
     public void setPriceToSell(double priceToSell) {
         this.priceToSell = priceToSell;
     }

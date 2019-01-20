@@ -1,3 +1,4 @@
+import Instruments.Instrument;
 import behaviours.ISell;
 
 import java.util.ArrayList;
@@ -5,10 +6,13 @@ import java.util.ArrayList;
 public class Shop {
 
     private String name;
+    private double till;
     private ArrayList<ISell> stock;
 
-    public Shop(String name) {
+
+    public Shop(String name, double till) {
         this.name = name;
+        this.till = till;
         this.stock = new ArrayList<>();
     }
 
@@ -40,5 +44,28 @@ public class Shop {
         return total;
     }
 
+    public double getTill() {
+        return till;
+    }
+
+    public void setTill(double till) {
+        this.till = till;
+    }
+
+    public double getItemPriceForSell(ISell item){
+        return item.getPriceToSell();
+    }
+
+    public void sellItemToCustomer(Customer customer, ISell item){
+        removeItemFromStock(item);
+        customer.addItemToPurchasedItems(item);
+        setTill(till += item.getPriceToSell());
+        double money = customer.getMoney();
+        customer.setMoney(money -= item.getPriceToSell());
+    }
+
+    public void buyItemFromCustomer(Customer customer, ISell item){
+
+    }
 
 }

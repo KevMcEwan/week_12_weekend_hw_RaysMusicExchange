@@ -13,17 +13,32 @@ public class ShopTest {
     Shop shop;
     ISell guitar;
     ISell drumStick;
+    Customer customer;
 
     @Before
     public void setUp() throws Exception {
-        shop = new Shop("Ray's Music Exchange");
+        shop = new Shop("Ray's Music Exchange", 50.00);
         guitar = new Guitar(InstrumentFamily.STRINGS, "bass", 70.00, 100.00);
         drumStick = new SellableItem("Drum Sticks", 6.00, 10.00);
+        customer = new Customer("Kevin", 200.00);
     }
 
     @Test
     public void getShopName() {
         assertEquals("Ray's Music Exchange", shop.getName());
+    }
+
+    @Test
+    public void canGetTill(){
+        assertEquals(50.00, shop.getTill(), 0.01);
+    }
+
+    @Test
+    public void canChangeTill(){
+        assertEquals(50.00, shop.getTill(), 0.01);
+        shop.setTill(75.00);
+        assertEquals(75.00, shop.getTill(), 0.01);
+
     }
 
     @Test
@@ -51,5 +66,24 @@ public class ShopTest {
         shop.addItemToStock(drumStick);
         assertEquals(34.00, shop.getTotalPotentialProfitOfStock(), 0.01);
     }
+
+    @Test
+    public void canGetItemPriceToSell(){
+        assertEquals(100, shop.getItemPriceForSell(guitar), 0.01);
+    }
+
+    @Test
+    public void canSellItemToCustomer(){
+        shop.addItemToStock(guitar);
+        shop.addItemToStock(drumStick);
+        assertEquals(2, shop.getTotalNumberOfItemsInStock());
+        shop.sellItemToCustomer(customer, guitar);
+        assertEquals(1, shop.getTotalNumberOfItemsInStock() );
+        assertEquals(100.00, customer.getMoney(), 0.01);
+        assertEquals(150.00, shop.getTill(), 0.01);
+
+
+    }
+
 
 }

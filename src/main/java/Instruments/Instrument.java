@@ -48,4 +48,6 @@ public abstract class Instrument implements IPlay, ISell {
     public void setPriceToSell(double priceToSell) {
         this.priceToSell = priceToSell;
     }
+
+
 }
