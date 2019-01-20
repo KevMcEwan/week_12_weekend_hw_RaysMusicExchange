@@ -73,7 +73,7 @@ public class ShopTest {
     }
 
     @Test
-    public void canSellItemToCustomer(){
+    public void canSellItemToCustomer__customerHasEnoughMoney(){
         shop.addItemToStock(guitar);
         shop.addItemToStock(drumStick);
         assertEquals(2, shop.getTotalNumberOfItemsInStock());
@@ -81,8 +81,18 @@ public class ShopTest {
         assertEquals(1, shop.getTotalNumberOfItemsInStock() );
         assertEquals(100.00, customer.getMoney(), 0.01);
         assertEquals(150.00, shop.getTill(), 0.01);
+    }
 
-
+    @Test
+    public void canSellItemToCustomer__customerDoesNotHaveEnoughMoney(){
+        shop.addItemToStock(guitar);
+        shop.addItemToStock(drumStick);
+        assertEquals(2, shop.getTotalNumberOfItemsInStock());
+        customer.setMoney(90.00);
+        shop.sellItemToCustomer(customer, guitar);
+        assertEquals(2, shop.getTotalNumberOfItemsInStock() );
+        assertEquals(90.00, customer.getMoney(), 0.01);
+        assertEquals(50.00, shop.getTill(), 0.01);
     }
 
 
