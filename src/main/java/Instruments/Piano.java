@@ -3,8 +3,8 @@ package Instruments;
 public class Piano extends Instrument {
 
 
-    public Piano(InstrumentFamily family, String type) {
-        super(family, type);
+    public Piano(InstrumentFamily family, String type, double priceBoughtIn, double priceToSell) {
+        super(family, type, priceBoughtIn, priceToSell);
     }
 
     @Override

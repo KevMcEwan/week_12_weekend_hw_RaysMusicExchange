@@ -11,7 +11,7 @@ public class OcarinaTest {
 
     @Before
     public void setUp() throws Exception {
-        ocarina = new Ocarina(InstrumentFamily.WOODWIND, "Ocarina of Time");
+        ocarina = new Ocarina(InstrumentFamily.WOODWIND, "Ocarina of Time", 70.00, 100.00);
     }
 
     @Test

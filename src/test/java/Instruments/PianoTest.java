@@ -11,7 +11,7 @@ public class PianoTest {
 
     @Before
     public void setUp() throws Exception {
-        piano = new Piano(InstrumentFamily.KEYBOARD, "Grand");
+        piano = new Piano(InstrumentFamily.KEYBOARD, "Grand",800.00, 1000.00);
     }
 
     @Test

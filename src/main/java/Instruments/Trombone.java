@@ -3,8 +3,8 @@ package Instruments;
 public class Trombone extends Instrument {
 
 
-    public Trombone(InstrumentFamily family, String type) {
-        super(family, type);
+    public Trombone(InstrumentFamily family, String type, double priceBoughtIn, double priceToSell) {
+        super(family, type, priceBoughtIn, priceToSell);
     }
 
     @Override

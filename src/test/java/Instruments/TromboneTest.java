@@ -11,7 +11,7 @@ public class TromboneTest  {
 
     @Before
     public void setUp() throws Exception {
-        trombone = new Trombone(InstrumentFamily.BRASS, "Tenor");
+        trombone = new Trombone(InstrumentFamily.BRASS, "Tenor", 200.00, 275.00);
     }
 
     @Test
